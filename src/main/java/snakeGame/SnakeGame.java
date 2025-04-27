@@ -36,7 +36,7 @@ public class SnakeGame extends JPanel implements ActionListener {
         this.height = height;
         this.cellSize = width / (FRAME_RATE * 2);
         setPreferredSize(new Dimension(width, height));
-        setBackground(Color.cyan.darker().darker().darker().darker());
+        setBackground(Color.blue.darker().darker());
     }
 
     public void startGame() {
