@@ -36,7 +36,7 @@ public class SnakeGame extends JPanel implements ActionListener {
         this.height = height;
         this.cellSize = width / (FRAME_RATE * 2);
         setPreferredSize(new Dimension(width, height));
-        setBackground(Color.blue.darker().darker());
+        setBackground(Color.cyan.darker().darker().darker().darker());
     }
 
     public void startGame() {
@@ -50,7 +50,7 @@ public class SnakeGame extends JPanel implements ActionListener {
                 handleKeyEvent(e.getKeyCode());
             }
         });
-        new Timer(1000 / FRAME_RATE, this).start();
+        new Timer(2000 / FRAME_RATE, this).start();
     }
 
     private void handleKeyEvent(final int keyCode) {
@@ -60,22 +60,22 @@ public class SnakeGame extends JPanel implements ActionListener {
             }
         } else if (!gameOver) {
             switch (keyCode) {
-                case KeyEvent.VK_UP:
+                case KeyEvent.VK_UP, KeyEvent.VK_W:
                     if (direction != Direction.DOWN) {
                         newDirection = Direction.UP;
                     }
                     break;
-                case KeyEvent.VK_DOWN:
+                case KeyEvent.VK_DOWN, KeyEvent.VK_S:
                     if (direction != Direction.UP) {
                         newDirection = Direction.DOWN;
                     }
                     break;
-                case KeyEvent.VK_RIGHT:
+                case KeyEvent.VK_RIGHT, KeyEvent.VK_D:
                     if (direction != Direction.LEFT) {
                         newDirection = Direction.RIGHT;
                     }
                     break;
-                case KeyEvent.VK_LEFT:
+                case KeyEvent.VK_LEFT, KeyEvent.VK_A:
                     if (direction != Direction.RIGHT) {
                         newDirection = Direction.LEFT;
                     }
@@ -115,7 +115,7 @@ public class SnakeGame extends JPanel implements ActionListener {
             for (final var point : snake) {
                 graphics.setColor(snakeColor);
                 graphics.fillRect(point.x, point.y, cellSize, cellSize);
-                final int newGreen = (int) Math.round(snakeColor.getGreen() * (0.95));
+                final int newGreen = (int) Math.round(snakeColor.getGreen() * (0.99));
                 snakeColor = new Color(0, newGreen, 0);
             }
 
